@@ -7,12 +7,44 @@
   tools:context=".MainActivity">
 
   <TextView
-    android:layout_width="wrap_content"
+    android:id="@+id/tvTitle"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:text="Hello World!"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
+    android:layout_marginTop="16dp"
+    android:text="@string/quiz_instructions"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/tvExtraContent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvExtraContent"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="@string/instructions"
+    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+    android:textColor="#090000"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvMain"
+    android:layout_width="409dp"
+    android:layout_height="659dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvExtraContent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
