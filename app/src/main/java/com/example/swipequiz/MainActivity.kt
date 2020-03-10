@@ -19,8 +19,10 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    dataSet.add(Question("is het mooi weer? ", false))
-    dataSet.add(Question("Joost", true))
+    dataSet.add(Question("A 'val' and 'var' are the same", false))
+    dataSet.add(Question("Mobile Application Development grants 12 ECTS", false))
+    dataSet.add(Question("A Unit in Kotlin corresponds to a void in java", false))
+    dataSet.add(Question("In Kotilin 'when' replaces the 'switch' operator in Java", true))
 
     viewAdapter = QuestionAdapter(dataSet)
     viewManager = LinearLayoutManager(this)

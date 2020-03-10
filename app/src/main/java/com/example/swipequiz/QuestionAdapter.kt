@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.item_question.view.*
 
 class QuestionAdapter(private val questions: MutableList<Question>) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
@@ -58,14 +60,13 @@ class QuestionAdapter(private val questions: MutableList<Question>) : RecyclerVi
   }
 
   private fun deleteCurrentTodoItem(viewHolder: RecyclerView.ViewHolder) {
-    questions.removeAt(viewHolder.adapterPosition)
-    notifyItemRemoved(viewHolder.adapterPosition)
-
-  }
-  private fun undoDelete(viewHolder: RecyclerView.ViewHolder) {
     removedPosition = viewHolder.adapterPosition
     removedItem = questions[viewHolder.adapterPosition]
 
+    questions.removeAt(viewHolder.adapterPosition)
+    notifyItemRemoved(viewHolder.adapterPosition)
+  }
+  private fun undoDelete() {
     questions.add(
       removedPosition,
       removedItem
@@ -82,13 +83,14 @@ class QuestionAdapter(private val questions: MutableList<Question>) : RecyclerVi
 
     if (trueOrFalse == question.correctOrFalse){
       deleteCurrentTodoItem(viewHolder)
-
+      viewHolder.itemView.snack("The answer you gave was correct!!")
     }
 
     if (!trueOrFalse == question.correctOrFalse) {
-       undoDelete(viewHolder)
+      deleteCurrentTodoItem(viewHolder)
+      undoDelete()
+      viewHolder.itemView.snack("The answer you gave was not correct!")
     }
   }
-
 
 }
